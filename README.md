@@ -1,9 +1,8 @@
 # Project Name
+jQuery Server Side Calculator
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
-
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+A calculator that performs and stores calculations on the server.  Built with jQuery and Node.js.  Css for basic styling, but calculators are function over form so styling was kept subtle.  
