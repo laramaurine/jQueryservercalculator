@@ -5,6 +5,7 @@ $(document).ready(onReady);
 function onReady(){
     console.log('jquery here for the party');
     $('#clear').on('click', clearInputs)
+    $('#submit').on('click', submitMathProblem)
     //
     
 }
@@ -23,6 +24,16 @@ function handleNumbers(){
     //this packages up the info from the dom
     //getting it ready to send
     console.log('handling the numbers');
+}
+
+function renderMath(){
+    $('#answers').empty();
+    for(let mathProblem of mathArray){
+        $('#answers').append(`<li></li>`)
+    }
+}
+function submitMathProblem(){
+    console.log('submit clicked');
 }
 
 function clearInputs(){
