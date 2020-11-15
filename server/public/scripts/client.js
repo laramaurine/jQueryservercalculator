@@ -1,40 +1,80 @@
 console.log('hello from js');
 
 $(document).ready(onReady);
+let operator = '';
+let numA = "";
+let numB ="";
 
 function onReady(){
     console.log('jquery here for the party');
     $('#clear').on('click', clearInputs)
-    $('#submit').on('click', submitMathProblem)
-    //
+    $('#submit').on('click', handleNumbers)
+    $('#multiply').on('click', multiplinator);
+   $('#add').on('click', addinator);
+   $('#subtract').on('click', subtractinator);
+   $('#divide').on('click', dividinator);
+    
     
 }
 
-//variable to send data(numbers) to server .data
-//variable to store data to splash onto dom
-//function to post data
 
 //function to render data
 function handleNumbers(){
-    let numbers = {
-        num1: $('#firstInput').val(),
-        operator: $('#perator').val(),
-        num2: $('#secondInput').val()
+    console.log('in handleNumbers');
+    let numA = $('#firstInput').val();
+    let numB = $('#secondInput').val();
+    let operator = $('#operator').val();
+    let mathProblem = {
+        numA: numA,
+        numB: numB,
+        operator: operator
     }
-    //this packages up the info from the dom
-    //getting it ready to send
-    console.log('handling the numbers');
+    console.log(mathProblem);
+    $.ajax({
+        method: 'POST',
+        url: '/math',
+        data: mathProblem
+    }).then(function(response){
+        console.log(response);
+    })
+    
 }
+function multiplinator() {
+   
+    mathSign = '*';
+    console.log(mathSign);
+ 
+ }
+ function addinator () {
+    
+    mathSign = '+';
+    console.log(mathSign);
+ 
+ }
+ function subtractinator () {
+    
+    mathSign = '-';
+    console.log(mathSign);
+ 
+ }
+ function dividinator () {
+    
+    mathSign = '/';
+    console.log(mathSign);
+ 
+ }
+ 
 
-function renderMath(){
-    $('#answers').empty();
-    for(let mathProblem of mathArray){
-        $('#answers').append(`<li></li>`)
-    }
-}
-function submitMathProblem(){
-    console.log('submit clicked');
-}
+console.log('yo yo yo');
+
+
+
+
+
+
+// function submitMathProblem(){
+//     console.log('submit clicked');
+// }
 
 function clearInputs(){
     //function to clear inputs -- done
