@@ -23,7 +23,7 @@ function handleNumbers(){
     console.log('in handleNumbers');
     let numA = $('#firstInput').val();
     let numB = $('#secondInput').val();
-    let operator = $('#operator').val();
+    //let operator = $('#operator').val();
     let mathProblem = {
         numA: numA,
         numB: numB,
@@ -36,48 +36,63 @@ function handleNumbers(){
         data: mathProblem
     }).then(function(response){
         console.log(response);
-    })
+        //clear inputs upon submit
+        $('#firstInput').val('');
+        $('#secondInput').val('');
+        getMathProblems(response);
+    
+})
     
 }
+function getMathProblems(){
+    $.ajax({
+        method: 'GET',
+        url: '/math'
+    }).then( function (response){
+        console.log('got math problems', response);
+        renderMathProblems(response);
+    })
+}
+function renderMathProblems( array ){
+    $('#answers').empty();
+    for(let item of array){
+    $('#answers').append(`<li>${item.num1}
+    ${item.operator}
+    ${item.num2}
+    =
+    ${item.result}
+ </li>`)
+    }
+}
+
+
 function multiplinator() {
-   
-    mathSign = '*';
-    console.log(mathSign);
+
+    operator = '*';
+    console.log(operator);
  
  }
  function addinator () {
     
-    mathSign = '+';
-    console.log(mathSign);
+    operator = '+';
+    console.log(operator);
  
  }
  function subtractinator () {
     
-    mathSign = '-';
-    console.log(mathSign);
+    operator = '-';
+    console.log(operator);
  
  }
  function dividinator () {
     
-    mathSign = '/';
-    console.log(mathSign);
+    operator = '/';
+    console.log(operator);
  
  }
  
-
-console.log('yo yo yo');
-
-
-
-
-
-
-// function submitMathProblem(){
-//     console.log('submit clicked');
-// }
-
 function clearInputs(){
-    //function to clear inputs -- done
+    //function to clear inputs when C is pushed
     console.log('inputs cleared');
     $('#firstInput').val('');
     $('#secondInput').val('');
