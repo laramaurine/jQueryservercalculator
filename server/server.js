@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('server/public'));
 
 mathProblem = [];
-//mathObject = {};
+//mathProblem = {};
 
 app.get('/math', function(req, res){
   res.send(mathProblem);

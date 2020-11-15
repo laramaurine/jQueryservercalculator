@@ -2,17 +2,18 @@ console.log('hello from js');
 
 $(document).ready(onReady);
 let operator = '';
-let numA = "";
-let numB ="";
+let numA = '';
+let numB ='';
 
 function onReady(){
     console.log('jquery here for the party');
     $('#clear').on('click', clearInputs)
     $('#submit').on('click', handleNumbers)
     $('#multiply').on('click', multiplinator);
-   $('#add').on('click', addinator);
-   $('#subtract').on('click', subtractinator);
-   $('#divide').on('click', dividinator);
+    $('#add').on('click', addinator);
+    $('#subtract').on('click', subtractinator);
+    $('#divide').on('click', dividinator);
+    getMathProblems();
     
     
 }
@@ -56,12 +57,12 @@ function getMathProblems(){
 function renderMathProblems( array ){
     $('#answers').empty();
     for(let item of array){
-    $('#answers').append(`<li>${item.num1}
-    ${item.operator}
-    ${item.num2}
-    =
-    ${item.result}
- </li>`)
+        $('#answers').append(`<li>${item.number1}
+        ${item.operator}
+        ${item.number2}
+        =
+        ${item.result}
+    </li>`)
     }
 }
 
