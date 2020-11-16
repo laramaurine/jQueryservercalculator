@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // This must be added before GET & POST routes.
 app.use(bodyParser.urlencoded({extended:true}))
@@ -24,7 +24,7 @@ app.get('/math', function(req, res){
     let operator = req.body.operator;
     let answer = 0;
     console.log( numA, numB, operator);
-//do the mathing
+//do the mathy math
     switch(operator) {
         case '+':
         answer = Number(numA) + Number(numB);

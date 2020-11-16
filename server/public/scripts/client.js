@@ -13,13 +13,14 @@ function onReady(){
     $('#add').on('click', addinator);
     $('#subtract').on('click', subtractinator);
     $('#divide').on('click', dividinator);
+    //keeps old problems on page when page refreshed
     getMathProblems();
     
     
 }
 
 
-//function to render data
+
 function handleNumbers(){
     console.log('in handleNumbers');
     let numA = $('#firstInput').val();
